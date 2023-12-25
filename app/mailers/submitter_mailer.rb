@@ -3,7 +3,7 @@
 class SubmitterMailer < ApplicationMailer
   MAX_ATTACHMENTS_SIZE = 10.megabytes
 
-  DEFAULT_INVITATION_SUBJECT = 'You are invited to submit a form'
+  DEFAULT_INVITATION_SUBJECT = 'คุณได้รับเชิญให้ส่งแบบฟอร์ม'
 
   def invitation_email(submitter)
     @current_account = submitter.submission.template.account
@@ -51,7 +51,7 @@ class SubmitterMailer < ApplicationMailer
       else
         submitters = submitter.submission.submitters.order(:completed_at)
                               .map { |e| e.name || e.email || e.phone }.join(', ')
-        %(#{submitter.submission.template.name} has been completed by #{submitters})
+        %(#{submitter.submission.template.name} เสร็จสมบูรณ์โดย #{submitters})
       end
 
     mail(from: from_address_for_submitter(submitter),
@@ -74,7 +74,7 @@ class SubmitterMailer < ApplicationMailer
       if @email_config
         ReplaceEmailVariables.call(@email_config.value['subject'], submitter:)
       else
-        'Your document copy'
+        'สำเนาเอกสารของคุณ'
       end
 
     mail(from: from_address_for_submitter(submitter),

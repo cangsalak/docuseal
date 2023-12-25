@@ -1,5 +1,5 @@
 <div class="max-w-lg mx-auto px-2">
-  <h1 class="text-3xl font-bold text-center mt-8">Profile Details</h1>
+  <h1 class="text-3xl font-bold text-center mt-8">รายละเอียด Profile</h1>
   <%= form_for('', as: resource_name, html: { class: 'space-y-6' }, data: { turbo: params[:redir].blank? }, url: new_registration_path) do |f| %>
     <% if params[:redir].present? %>
       <%= hidden_field_tag :redir, params[:redir] %>
@@ -9,18 +9,18 @@
       <%= f.fields_for resource do |ff| %>
         <div class="grid gap-2 md:grid-cols-2 md:gap-4">
           <div class="form-control">
-            <%= ff.label :first_name, class: 'label' %>
+            <%= ff.label :first_name, 'ชื่อ', class: 'label' %>
             <%= ff.text_field :first_name, required: true, class: 'base-input' %>
           </div>
           <div class="form-control">
-            <%= ff.label :last_name, class: 'label' %>
+            <%= ff.label :last_name,'นามสกุล', class: 'label' %>
             <%= ff.text_field :last_name, required: true, class: 'base-input' %>
           </div>
         </div>
       <% end %>
       <%= f.fields_for resource do |ff| %>
         <div class="form-control <%= 'hidden' if (params[:oauth_callback] || params[:sign_up]) && resource.email? %>">
-          <%= ff.label :email, class: 'label' %>
+          <%= ff.label :email,  'อีเมล์',class: 'label' %>
           <%= ff.email_field :email, value: EmailTypo.call(resource.email), required: true, class: 'base-input' %>
         </div>
       <% end %>
@@ -28,24 +28,24 @@
         <set-timezone data-input-id="_account_timezone"></set-timezone>
         <%= ff.hidden_field :timezone %>
         <div class="form-control">
-          <%= ff.label :name, 'Company name (optional)', class: 'label' %>
+          <%= ff.label :name, 'ชื่อหน่วยงาน (optional)', class: 'label' %>
           <%= ff.text_field :name, class: 'base-input' %>
         </div>
       <% end %>
       <%= f.fields_for resource do |ff| %>
         <div class="form-control <%= 'hidden' if params[:oauth_callback] %>">
-          <%= ff.label :password, class: 'label' %>
+          <%= ff.label :password, 'รหัสผ่าน', class: 'label' %>
           <%= ff.password_field :password, required: !params[:oauth_callback], class: 'base-input' %>
         </div>
       <% end %>
     </div>
     <div class="form-control">
-      <%= f.button button_title(title: 'Sign up', disabled_with: 'Signing up'), class: 'base-button' %>
+      <%= f.button button_title(title: 'สมัคร', disabled_with: 'Signing up'), class: 'base-button' %>
       <% if Docuseal.multitenant? %>
         <button id="talk_to_sales_button" class="hidden" type="submit" formaction="<%= enquiries_path %>" formnovalidate="true" formmethod="post"></button>
         <label class="flex items-center cursor-pointer">
           <input type="checkbox" name="talk_to_sales" class="base-checkbox" onchange="window.talk_to_sales_button.click()">
-          <span class="label">I would like to talk to sales</span>
+          <span class="label">ต้องการคุยกับฝ่ายขาย</span>
         </label>
       <% end %>
     </div>

@@ -7,6 +7,6 @@ class UserMailer < ApplicationMailer
     @token = @user.send(:set_reset_password_token)
 
     mail(to: @user.friendly_name,
-         subject: 'You are invited to DocuSeal')
+         subject: 'คุณได้รับเชิญให้เข้าร่วม Esign Approve')
   end
 end

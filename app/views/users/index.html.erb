@@ -2,12 +2,12 @@
   <%= render 'shared/settings_nav' %>
   <div class="md:flex-grow">
     <div class="flex justify-between mb-4">
-      <h1 class="text-4xl font-bold">Team</h1>
+      <h1 class="text-4xl font-bold">ทีม</h1>
       <div class="flex items-center space-x-4">
         <% if can?(:create, User.new(account: current_account)) %>
           <%= link_to new_user_path, class: 'btn btn-primary btn-md gap-2', data: { turbo_frame: 'modal' } do %>
             <%= svg_icon('plus', class: 'w-6 h-6') %>
-            <span>New User</span>
+            <span>สร้างผู้ใช้งานใหม่</span>
           <% end %>
         <% end %>
       </div>
@@ -17,16 +17,16 @@
         <thead class="bg-base-200">
           <tr class="text-neutral uppercase">
             <th>
-              Name
+              ชื่อ
             </th>
             <th>
-              Email
+              อีเมล์
             </th>
             <th>
-              Role
+              สิทธิ์
             </th>
             <th>
-              Last session
+              เข้าสู่ระบบเมื่อ
             </th>
             <th class="text-right" width="1px">
             </th>
@@ -52,12 +52,12 @@
               <td class="flex items-center space-x-2 justify-end">
                 <% if can?(:update, user) %>
                   <%= link_to edit_user_path(user), class: 'btn btn-outline btn-xs', title: 'Edit', data: { turbo_frame: 'modal' } do %>
-                    Edit
+                    แก้ไข
                   <% end %>
                 <% end %>
                 <% if can?(:destroy, user) && user != current_user %>
                   <%= button_to user_path(user), method: :delete, class: 'btn btn-outline btn-error btn-xs', title: 'Delete', data: { turbo_confirm: 'Are you sure?' } do %>
-                    Remove
+                    ลบ
                   <% end %>
                 <% end %>
               </td>

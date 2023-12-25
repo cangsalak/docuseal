@@ -1,22 +1,22 @@
 <div class="flex flex-wrap space-y-4 md:flex-nowrap md:space-y-0">
   <%= render 'shared/settings_nav' %>
   <div class="flex-grow max-w-xl mx-auto">
-    <h1 class="text-4xl font-bold mb-4">Account</h1>
+    <h1 class="text-4xl font-bold mb-4">บัญชี</h1>
     <%= form_for '', url: settings_account_path, method: :patch, html: { autocomplete: 'off', class: 'space-y-4' } do |f| %>
       <%= f.fields_for current_account do |ff| %>
         <div class="form-control">
-          <%= ff.label :name, 'Company Name', class: 'label' %>
+          <%= ff.label :name, 'ชื่อบริษัท', class: 'label' %>
           <%= ff.text_field :name, required: true, class: 'base-input' %>
         </div>
         <div class="grid md:grid-cols-2 gap-4">
           <div class="form-control">
-            <%= ff.label :timezone, class: 'label' %>
+            <%= ff.label :timezone,'เขตเวลา', class: 'label' %>
             <%= ff.select :timezone, nil, {}, class: 'base-select' do %>
               <%= time_zone_options_for_select(current_account.timezone) %>
             <% end %>
           </div>
           <div class="form-control">
-            <%= ff.label :locale, 'Time format', class: 'label' %>
+            <%= ff.label :locale, 'รูปแบบเวลา', class: 'label' %>
             <%= ff.select :locale, options_for_select(controller.class::LOCALE_OPTIONS.invert, current_account.locale), {}, class: 'base-select' %>
           </div>
         </div>
@@ -32,20 +32,20 @@
       <% end %>
       <% if can?(:update, current_account) %>
         <div class="form-control pt-2">
-          <%= f.button button_title(title: 'Update', disabled_with: 'Updating'), class: 'base-button' %>
+          <%= f.button button_title(title: 'อัพเดท', disabled_with: 'Updating'), class: 'base-button' %>
         </div>
       <% end %>
     <% end %>
     <% if can?(:manage, AccountConfig) %>
       <div class="px-1 mt-8">
-        <h2 class="text-2xl font-bold mb-2">Preferences</h2>
+        <h2 class="text-2xl font-bold mb-2">การตั้งค่า</h2>
         <% account_config = AccountConfig.find_or_initialize_by(account: current_account, key: AccountConfig::FORCE_MFA) %>
         <% if can?(:manage, account_config) %>
           <%= form_for account_config, url: account_configs_path, method: :post do |f| %>
             <%= f.hidden_field :key %>
             <div class="flex items-center justify-between py-2.5">
               <span>
-                Force 2FA with Authenticator App
+              บังคับ 2FA ด้วยแอป Authenticator
               </span>
               <%= f.check_box :value, class: 'toggle', checked: account_config.value, onchange: 'this.form.requestSubmit()' %>
             </div>
@@ -57,7 +57,7 @@
             <%= f.hidden_field :key %>
             <div class="flex items-center justify-between py-2.5">
               <span>
-                Allow typed text signatures
+              อนุญาตให้พิมพ์ลายเซ็นข้อความ
               </span>
               <%= f.check_box :value, class: 'toggle', checked: account_config.value != false, onchange: 'this.form.requestSubmit()' %>
             </div>

@@ -2,10 +2,10 @@
   <%= render 'shared/settings_nav' %>
   <div class="md:flex-grow">
     <div class="max-w-xl">
-      <h1 class="text-4xl font-bold mb-4">PDF Signature</h1>
+      <h1 class="text-4xl font-bold mb-4">ตรวจสอบความถูกต้องของลายเซ็น</h1>
       <div id="result">
         <p class="mb-2">
-          Upload signed PDF file to validate its signature:
+        อัปโหลดไฟล์ PDF ที่ลงนามแล้วเพื่อตรวจสอบความถูกต้องของลายเซ็น:
         </p>
       </div>
       <%= form_for '', url: verify_pdf_signature_index_path, method: :post, html: { enctype: 'multipart/form-data' } do |f| %>
@@ -29,7 +29,7 @@
                   Verify Signed PDF
                 </div>
                 <div class="text-xs">
-                  <span class="font-medium">Click to upload</span> or drag and drop files
+                  <span class="font-medium">คลิกเพื่ออัพโหลด</span> หรือลาก และวาง
                 </div>
               </div>
               <input id="file" name="files[]" class="hidden" data-action="change:file-dropzone#onSelectFiles" data-target="file-dropzone.input" type="file" accept="application/pdf" multiple>
@@ -39,11 +39,11 @@
       <% end %>
     </div>
     <div class="flex justify-between items-end mb-4 mt-8">
-      <h2 class="text-3xl font-bold">Signing Certificates</h2>
+      <h2 class="text-3xl font-bold">ใบรับรองการลงนาม</h2>
       <% if can?(:create, @encrypted_config) %>
         <%= link_to new_settings_esign_path, class: 'btn btn-primary btn-md', data: { turbo_frame: 'modal' } do %>
           <%= svg_icon('plus', class: 'w-6 h-6') %>
-          <span>Upload Cert</span>
+          <span>อัปโหลดใบรับรอง</span>
         <% end %>
       <% end %>
     </div>
@@ -110,7 +110,7 @@
                 <span>
                   Timeserver URL
                 </span>
-                <span class="tooltip" data-tip="URL of the trusted timeserver to be used to generate timestamp signatures.">
+                <span class="tooltip" data-tip="URL ของเซิร์ฟเวอร์เวลาที่เชื่อถือได้ที่จะใช้ในการสร้างลายเซ็นการประทับเวลา.">
                   <%= svg_icon('info_circle', class: 'w-4 h-4') %>
                 </span>
               </span>
@@ -118,7 +118,7 @@
             <%= f.url_field :value, autocomplete: 'off', class: 'base-input', placeholder: 'URL (optional)' %>
           </div>
           <div class="form-control pt-2">
-            <%= f.button button_title(title: 'Save', disabled_with: 'Updating'), class: 'base-button' %>
+            <%= f.button button_title(title: 'บันทึก', disabled_with: 'Updating'), class: 'base-button' %>
           </div>
         <% end %>
       <% end %>

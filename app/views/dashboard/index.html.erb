@@ -1,7 +1,7 @@
 <% if Docuseal.demo? %><%= render 'shared/demo_alert' %><% end %>
 <% if @pagy.count > 0 || params[:q].present? || @template_folders.present? %>
   <div class="flex justify-between mb-4 items-center">
-    <h1 class="text-4xl font-bold"><span class="hidden md:inline">Document</span> Templates</h1>
+    <h1 class="text-4xl font-bold"><span class="hidden md:inline">เอกสาร</span> Templates</h1>
     <div class="flex space-x-2">
       <% if params[:q].present? || @pagy.pages > 1 || @template_folders.present? %>
         <%= render 'shared/search_input' %>
@@ -10,7 +10,7 @@
         <%= render 'templates/upload_button' %>
         <%= link_to new_template_path, class: 'white-button !border gap-2', data: { turbo_frame: :modal } do %>
           <%= svg_icon('plus', class: 'w-6 h-6 stroke-2') %>
-          <span class="hidden md:block">Create</span>
+          <span class="hidden md:block">สร้างใหม่</span>
         <% end %>
       <% end %>
     </div>
@@ -18,7 +18,7 @@
   <% view_archived_html = capture do %>
     <% if current_account.templates.where.not(deleted_at: nil).exists? %>
       <div>
-        <a href="<%= templates_archived_index_path %>" class="link text-sm">View Archived</a>
+        <a href="<%= templates_archived_index_path %>" class="link text-sm">ดูข้อมูลที่จัดเก็บ</a>
       </div>
     <% end %>
   <% end %>
@@ -44,16 +44,16 @@
                   <%= svg_icon('cloud_upload', class: 'w-10 h-10') %>
                 </span>
                 <div class="font-medium mb-1">
-                  Upload New Document
+                อัปโหลดเอกสารใหม่
                 </div>
                 <div class="text-xs">
-                  <span class="font-medium">Click to upload</span> or drag and drop
+                  <span class="font-medium">คลิกเพื่ออัพโหลด</span> หรือลากและวาง
                 </div>
               </span>
               <span data-target="file-dropzone.loading" class="flex flex-col items-center hidden">
                 <%= svg_icon('loader', class: 'w-10 h-10 animate-spin') %>
                 <div class="font-medium mb-1">
-                  Uploading...
+                  กำลังอัพโหลด...
                 </div>
               </span>
             </div>
@@ -74,7 +74,7 @@
   <% elsif params[:q].present? %>
     <div class="text-center">
       <div class="mt-16 text-3xl font-semibold">
-        Templates not Found
+        ไม่มีเอกสาร
       </div>
     </div>
   <% end %>
@@ -84,13 +84,13 @@
       <div class="flex items-center h-full">
         <div class="mx-auto">
           <div class="max-w-xl mx-auto">
-            <h1 class="text-5xl font-bold text-base-content">👋 Welcome to <%= Docuseal.product_name %></h1>
+            <h1 class="text-5xl font-bold text-base-content">👋 ยินดีต้อนรับสู่ <%= Docuseal.product_name %></h1>
           </div>
           <div class="max-w-lg mx-auto">
-            <p class="py-6 text-gray-600">Streamline document workflows, from creating customizable templates to filling and signing document forms</p>
+            <p class="py-6 text-gray-600">ปรับปรุงเวิร์กโฟลว์เอกสาร ตั้งแต่การสร้างเทมเพลตที่ปรับแต่งได้ไปจนถึงการกรอกและลงนามในแบบฟอร์มเอกสาร</p>
             <%= link_to new_template_path, class: 'base-button', data: { turbo_frame: :modal } do %>
               <%= svg_icon('plus', class: 'w-6 h-6 stroke-2') %>
-              <span class="mr-1">Create Template</span>
+              <span class="mr-1">สร้างเอกสาร</span>
             <% end %>
           </div>
         </div>

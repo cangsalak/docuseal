@@ -1,7 +1,7 @@
 <div class="flex flex-wrap space-y-4 md:flex-nowrap md:space-y-0">
   <%= render 'shared/settings_nav' %>
   <div class="flex-grow max-w-xl mx-auto">
-    <h1 class="text-4xl font-bold mb-4">Email SMTP</h1>
+    <h1 class="text-4xl font-bold mb-4">การตั้งค่า Email SMTP</h1>
     <% value = @encrypted_config.value || {} %>
     <%= form_for @encrypted_config, url: settings_email_index_path, method: :post, html: { autocomplete: 'off', class: 'space-y-4' } do |f| %>
       <%= f.fields_for :value do |ff| %>

@@ -16,7 +16,7 @@
         <input type="checkbox">
         <div class="collapse-title text-xl font-medium">
           <div>
-            Request signature, multiple submitters with default values
+          ขอลายเซ็น ผู้ส่งหลายรายพร้อมค่าเริ่มต้น
           </div>
           <div class="mt-1">
             <div class="badge badge-warning badge-lg">POST</div>
@@ -34,7 +34,7 @@
              "submitters": [
                {
                  "name": "John Doe",
-                 "role": "<%= current_account.templates.last ? current_account.templates.last.submitters.first['name'] : 'First Party' %>",
+                 "role": "<%= current_account.templates.last ? current_account.templates.last.submitters.first['name'] : 'Esign Approve' %>",
                  "email": "<%= current_user.email.sub('@', '+test@') %>",
                  "values": {
                    "Form Text Field Name": "Default Value"
@@ -56,7 +56,7 @@
         <input type="checkbox">
         <div class="collapse-title text-xl font-medium">
           <div>
-            Request signature, single submitter
+          ขอลายเซ็นผู้ส่งคนเดียว
           </div>
           <div class="mt-1">
             <div class="badge badge-warning badge-lg">POST</div>
@@ -82,7 +82,7 @@
         <input type="checkbox">
         <div class="collapse-title text-xl font-medium">
           <div>
-            Template details
+          รายละเอียด
           </div>
           <div class="mt-1">
             <div class="badge badge-info badge-lg">GET</div>
@@ -94,7 +94,7 @@
             <% text = capture do %>curl '<%= api_template_url(current_account.templates&.last || 1) %>' \
        --header 'X-Auth-Token: <%= current_user.access_token.token %>'<% end.to_str %>
             <span class="top-0 right-0 absolute">
-              <%= render 'shared/clipboard_copy', icon: 'copy', text:, class: 'btn btn-ghost text-white', icon_class: 'w-6 h-6 text-white', copy_title: 'Copy', copied_title: 'Copied' %>
+              <%= render 'shared/clipboard_copy', icon: 'copy', text:, class: 'btn btn-ghost text-white', icon_class: 'w-6 h-6 text-white', copy_title: 'คัดลอก', copied_title: 'Copied' %>
             </span>
             <pre data-prefix="$"><code class="overflow-hidden w-full"><%= text %></code></pre>
           </div>
@@ -102,7 +102,7 @@
       </div>
     </div>
     <div class="text-center">
-      <%= link_to 'Open Full API Reference', "#{Docuseal::PRODUCT_URL}/docs/api", class: 'btn btn-warning text-base mt-4 px-8', target: '_blank', rel: 'noopener' %>
+      <%= link_to 'เปิดการอ้างอิง API แบบเต็ม', "#{Docuseal::PRODUCT_URL}/docs/api", class: 'btn btn-warning text-base mt-4 px-8', target: '_blank', rel: 'noopener' %>
     </div>
   </div>
 </div>

@@ -62,9 +62,9 @@ Rails.application.configure do
   # config.action_view.annotate_rendered_view_with_filenames = true
 
   config.active_record.encryption = {
-    primary_key: 'test master key',
-    deterministic_key: 'test deterministic key',
-    key_derivation_salt: 'test key derivation salt'
+    primary_key: encryption_secret.first(32),
+    deterministic_key: encryption_secret.last(32),
+    key_derivation_salt: Digest::SHA256.hexdigest(encryption_secret)
   }
 
   config.middleware.use(Class.new do

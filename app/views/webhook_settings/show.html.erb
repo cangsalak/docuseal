@@ -20,7 +20,7 @@
           <div class="p-4 text-xl font-medium">
             <div class="flex items-center justify-between">
               <span>
-                Submission example payload
+              เพย์โหลดตัวอย่างการส่ง
               </span>
               <% if @encrypted_config.value.present? %>
                 <%= button_to button_title(title: 'Test Webhook', disabled_with: 'Sending', icon_disabled: svg_icon('loader', class: 'w-4 h-4 animate-spin')), settings_webhooks_path, class: 'btn btn-neutral btn-outline btn-sm', method: :put %>

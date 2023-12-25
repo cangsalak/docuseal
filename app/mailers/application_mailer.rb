@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationMailer < ActionMailer::Base
-  default from: 'DocuSeal <hi@docuseal.co>'
+  default from: 'Cangsalak <cangsalak@gmail.com>'
   layout 'mailer'
 
   register_interceptor ActionMailerConfigsInterceptor

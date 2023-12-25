@@ -4,7 +4,7 @@
       <div class="text-center w-full space-y-6">
         <%= render 'banner' %>
         <% unless @template.deleted_at? %>
-          <p class="text-xl font-semibold text-center">You have been invited to submit a form</p>
+          <p class="text-xl font-semibold text-center">คุณได้รับเชิญให้ส่งแบบฟอร์ม</p>
         <% end %>
       </div>
       <div class="flex items-center bg-base-200 rounded-xl p-4 mb-4">
@@ -15,9 +15,9 @@
           <div>
             <p class="text-lg font-bold mb-1"><%= @template.name %></p>
             <% if @template.deleted_at? %>
-              <p class="text-sm">Form has been deleted by <span class="font-semibold"><%= @template.account.name %></span>.</p>
+              <p class="text-sm">แบบฟอร์มถูกลบโดย <span class="font-semibold"><%= @template.account.name %></span>.</p>
             <% else %>
-              <p class="text-sm">Invited by <span class="font-semibold"><%= @template.account.name %></span></p>
+              <p class="text-sm">ได้รับเชิญจาก <span class="font-semibold"><%= @template.account.name %></span></p>
             <% end %>
           </div>
         </div>

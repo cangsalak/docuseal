@@ -25,8 +25,8 @@ class Account < ApplicationRecord
   has_many :active_users, -> { active }, dependent: :destroy,
                                          inverse_of: :account, class_name: 'User'
 
-  attribute :timezone, :string, default: 'UTC'
-  attribute :locale, :string, default: 'en-US'
+  attribute :timezone, :string, default: 'Asia/bangkok'
+  attribute :locale, :string, default: 'th-TH'
 
   def default_template_folder
     super || build_default_template_folder(name: TemplateFolder::DEFAULT_NAME,

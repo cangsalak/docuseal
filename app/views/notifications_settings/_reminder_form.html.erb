@@ -5,19 +5,19 @@
     <div class="flex space-x-4">
       <div class="w-full">
         <%= f.fields_for :value, record  do |ff| %>
-          <%= ff.label :first_duration, 'First reminder in', class: 'label' %>
+          <%= ff.label :first_duration, 'การแจ้งเตือนครั้งที่ 1 ใน', class: 'label' %>
           <%= ff.select :first_duration, AccountConfigs::REMINDER_DURATIONS.invert, { include_blank: 'None' }, class: 'base-select' %>
         <% end %>
       </div>
       <div class="w-full">
         <%= f.fields_for :value, record  do |ff| %>
-          <%= ff.label :second_duration, 'Second reminder in', class: 'label' %>
+          <%= ff.label :second_duration, 'การแจ้งเตือนครั้งที่ 2 ใน', class: 'label' %>
           <%= ff.select :second_duration, AccountConfigs::REMINDER_DURATIONS.invert, { include_blank: 'None' }, class: 'base-select' %>
         <% end %>
       </div>
       <div class="w-full">
         <%= f.fields_for :value, record  do |ff| %>
-          <%= ff.label :third_duration, 'Third reminder in', class: 'label' %>
+          <%= ff.label :third_duration, 'การแจ้งเตือนครั้งที่ 3 ใน', class: 'label' %>
           <%= ff.select :third_duration, AccountConfigs::REMINDER_DURATIONS.invert, { include_blank: 'None' }, class: 'base-select' %>
         <% end %>
       </div>

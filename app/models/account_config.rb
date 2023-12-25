@@ -32,27 +32,27 @@ class AccountConfig < ApplicationRecord
 
   DEFAULT_VALUES = {
     SUBMITTER_INVITATION_EMAIL_KEY => {
-      'subject' => 'You are invited to submit a form',
-      'body' => "Hi there,\n\n" \
-                "You have been invited to submit the \"{{template.name}}\" form.\n\n" \
+      'subject' => 'คุณได้รับเชิญให้ส่งแบบฟอร์ม',
+      'body' => "Esign Approve,\n\n" \
+                "คุณได้รับเชิญให้ส่ง \"{{template.name}}\" จาก.\n\n" \
                 "{{submitter.link}}\n\n" \
-                "Please contact us by replying to this email if you didn't request this.\n\n" \
-                "Thanks,\n" \
+                "โปรดติดต่อเราโดยตอบกลับอีเมลนี้หากคุณไม่ได้ร้องขอ\n\n" \
+                "ขอบคุณค่ะ,\n" \
                 '{{account.name}}'
     },
     SUBMITTER_COMPLETED_EMAIL_KEY => {
-      'subject' => '{{template.name}} has been completed by {{submission.submitters}}',
+      'subject' => '{{template.name}} เสร็จสมบูรณ์โดย{{submission.submitters}}',
       'body' => "Hi,\n\n" \
-                "\"{{template.name}}\" form has been completed by {{submission.submitters}}\n\n" \
+                "\"{{template.name}}\" เสร็จสมบูรณ์โดย{{submission.submitters}}\n\n" \
                 '{{submission.link}}'
     },
     SUBMITTER_DOCUMENTS_COPY_EMAIL_KEY => {
-      'subject' => 'Your document copy',
-      'body' => "Hi there,\n\n" \
-                "Please check the copy of your \"{{template.name}}\" submission in the email attachments.\n" \
-                "Alternatively, you can download your copy using:\n\n" \
+      'subject' => 'สำเนาเอกสารของคุณ',
+      'body' => "Esign Approve,\n\n" \
+                "กรุณาตรวจสอบสำเนาของคุณ \"{{template.name}}\" ส่งในไฟล์แนบอีเมล\n" \
+                "หรือคุณสามารถดาวน์โหลดสำเนาของคุณโดยใช้:\n\n" \
                 "{{documents.link}}\n\n" \
-                "Thanks,\n" \
+                "ขอบคุณค่ะ,\n" \
                 '{{account.name}}'
     }
   }.freeze
